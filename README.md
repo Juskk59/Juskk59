@@ -50,6 +50,14 @@
 
 ###
 
-<img align="center" height="150" src="https://i.pinimg.com/originals/c3/19/96/c31996a0a371178e9d8d2477ef7fa753.gif"  />
+<img align="right" height="150" src="https://i.pinimg.com/originals/c3/19/96/c31996a0a371178e9d8d2477ef7fa753.gif"  />
 
+###
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Juskk59/Juskk59/output/pacman-contribution-graph-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Juskk59/Juskk59/output/pacman-contribution-graph.svg">
+  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/Juskk59/Juskk59/output/pacman-contribution-graph.svg">
+</picture>
+
+###
