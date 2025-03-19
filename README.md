@@ -50,12 +50,6 @@
 
 ###
 
-<img align="right" height="150" src="https://i.pinimg.com/originals/c3/19/96/c31996a0a371178e9d8d2477ef7fa753.gif"  />
+<img align="center" height="150" src="https://i.pinimg.com/originals/c3/19/96/c31996a0a371178e9d8d2477ef7fa753.gif"  />
 
-###
 
-<picture>
-  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/Juskk59/Juskk59/output/pacman-contribution-graph.svg">
-</picture>
-
-###
