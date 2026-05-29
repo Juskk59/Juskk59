@@ -10,14 +10,14 @@
 
 <div align="center">
   <img
-    src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Juskk59&theme=dracula"
+    src="https://raw.githubusercontent.com/Juskk59/Juskk59/main/profile-summary-card-output/dracula/3-stats.svg"
     height="150"
     alt="Estatísticas do GitHub"
   />
   <img
-    src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Juskk59&theme=dracula"
+    src="https://raw.githubusercontent.com/Juskk59/Juskk59/main/profile-summary-card-output/dracula/1-repos-per-language.svg"
     height="150"
-    alt="Linguagens mais utilizadas"
+    alt="Linguagens mais utilizadas por repositório"
   />
 </div>
 
