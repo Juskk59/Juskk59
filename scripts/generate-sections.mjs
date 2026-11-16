@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Builds the static, animated section cards used in README.md
- * (hero, contact buttons, about, highlights, tech stack, experience, footer).
+ * (hero, contact buttons, about, projects, tech stack, experience, footer).
  *
  * GitHub strips CSS from READMEs, so each section is an SVG with its own
  * styles and animations. Edit the CONTENT object below and run:
@@ -33,24 +33,21 @@ const CONTENT = {
     'Since 2025 I have been working on live e-commerce sites: building features and integrations, fixing bugs, making pages faster and taking changes from staging all the way to production. A lot of that work happens in direct contact with clients, which taught me to ask "why" before writing any code.',
     "I studied Systems Analysis and Development at IFPR, where I also worked with Java, Node.js, C++, MySQL and MongoDB. I'm always happy to pick up something outside my usual stack.",
   ],
-  chips: ['Londrina, Brazil', 'Portuguese & English', 'Systems Analysis · IFPR', 'Full stack'],
-
-  highlights: [
-    ['Performance', 'Took a home page from 65 to 95 in Lighthouse performance on mobile (70 to 100 on desktop) by loading third-party scripts only after the visitor accepts cookies.'],
-    ['Security', 'Found and fixed security issues in third-party payment and anti-fraud modules, including an SQL injection and a webhook that accepted requests without validation.'],
-    ['Front end', 'Helped move a store to a new Tailwind-based theme, rebuilding the checkout and setting up 301 redirects so no old link would break.'],
-    ['Automation', 'Wrote a set of Python scripts that collected product images from public APIs and published 185 products with photos and SEO content.'],
-    ['Ops', 'Wrote a Bash script that applied security patches to every store on our server with zero downtime.'],
+  projects: [
+    ['GameTracker', 'Python', 'Desktop app to organize and rate my personal game library, with login, cover images, simple stats and MongoDB storage.', ['Tkinter', 'MongoDB']],
+    ['ControleEstoque', 'Python', 'Inventory manager for the desktop with user login, a Tkinter interface, an MVC structure and a MongoDB database.', ['Tkinter', 'MVC']],
+    ['Processamento-De-Imagens', 'Python', 'Segments images and removes their background using K-means, erosion and dilation with OpenCV.', ['OpenCV', 'K-means']],
+    ['Jokenpo', 'JavaScript', 'Rock, paper, scissors in the browser. A small practice project from the SENAC course.', ['HTML', 'CSS']],
+    ['MySQL-Features', 'SQL', 'A script from class that goes through lots of MySQL commands and what each one is useful for.', ['MySQL']],
+    ['Algoritmos-Java-SENAC-', 'Java', 'Exercises and algorithms I wrote during the Java developer course at SENAC.', ['Algorithms']],
   ],
 
   stack: [
     ['Languages', [['php', 'PHP'], ['js', 'JavaScript'], ['python', 'Python'], ['java', 'Java'], ['html', 'HTML'], ['css', 'CSS']]],
     ['Front end', [['tailwind', 'Tailwind'], ['alpinejs', 'Alpine.js'], ['vue', 'Vue'], ['react', 'React'], ['figma', 'Figma']]],
-    ['Back end & data', [['local:magento', 'Magento'], ['nodejs', 'Node.js'], ['wordpress', 'WordPress'], ['mysql', 'MySQL'], ['mongodb', 'MongoDB'], ['redis', 'Redis']]],
+    ['Back end & data', [['local:magento', 'Magento'], ['nodejs', 'Node.js'], ['wordpress', 'WordPress'], ['mysql', 'MySQL'], ['mongodb', 'MongoDB']]],
     ['Tools', [['git', 'Git'], ['github', 'GitHub'], ['linux', 'Linux'], ['bash', 'Bash']]],
   ],
-
-  statsNote: 'Most of my work lives in private repositories, so it does not show up as public code. These cards update every day and include my private commits (only the numbers, never code or repository names).',
 
   experience: [
     ['Junior Full Stack Developer', 'Mage2 · Londrina, Brazil', 'Jan 2026 – Present', 'Front end and back end for live online stores with PHP, JavaScript, Tailwind CSS and Alpine.js, from staging to deploy.', true],
@@ -200,7 +197,7 @@ function button(icon, label) {
 /* ----------------------------------------------------------------- about */
 function about() {
   const size = 15, lh = 25, maxW = W - 64;
-  let y = 104;
+  let y = 86;
   const paras = CONTENT.about
     .map((p, i) => {
       const lines = wrap(p, size, maxW);
@@ -212,48 +209,68 @@ function about() {
     })
     .join('\n');
 
-  y += 6;
-  let x = 32;
-  const chips = CONTENT.chips
-    .map((c, i) => {
-      const w = Math.round(c.length * 7.1 + 40);
-      const g = `<g class="rise" ${delay(i + 4, 0.1)} transform="translate(${x} ${y})">
-  <rect width="${w}" height="32" rx="16" fill="${C.bg2}" stroke="url(#g-accent)" stroke-opacity="0.55"/>
-  <circle cx="17" cy="16" r="3.5" fill="url(#g-accent)"/>
-  <text x="29" y="20.5" fill="${C.soft}" font-size="12.5" font-weight="600">${esc(c)}</text>
-</g>`;
-      x += w + 10;
-      return g;
-    })
-    .join('\n');
-  const H = y + 32 + 32;
-  return frame(W, H, `${title('About me', 'A little bit about who I am')}\n${paras}\n${chips}`);
+  return frame(W, y + 10, `${title('About me')}\n${paras}`);
 }
 
-/* ------------------------------------------------------------ highlights */
-function highlights() {
-  const size = 14.5, lh = 23, textX = 96, maxW = W - textX - 36;
-  let y = 104;
-  const items = CONTENT.highlights
-    .map(([label, text], i) => {
-      const lines = wrap(text, size, maxW);
-      const top = y;
-      const g = `<g class="rise" ${delay(i + 1, 0.14)}>
-  <text x="32" y="${top + 18}" font-family="${MONO}" font-size="22" font-weight="800" fill="url(#g-text)">${String(i + 1).padStart(2, '0')}</text>
-  <text x="${textX}" y="${top}" fill="${C.light}" font-size="11" font-weight="700" letter-spacing="0.12em">${esc(label.toUpperCase())}</text>
-  ${lines.map((l, j) => `<text x="${textX}" y="${top + 24 + j * lh}" fill="${C.soft}" font-size="${size}">${esc(l)}</text>`).join('')}
+/* -------------------------------------------------------------- projects */
+const LANG_COLOR = { Python: '#3572A5', JavaScript: '#f1e05a', Java: '#b07219', SQL: '#e38c00' };
+
+function projectsTitle() {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="56" viewBox="0 0 ${W} 56" fill="none" role="img">
+<defs><linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="${C.pink}"/><stop offset="0.5" stop-color="${C.primary}"/><stop offset="1" stop-color="${C.indigo}"/>
+</linearGradient>
+<linearGradient id="g-rule" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="${C.primary}" stop-opacity="0.6"/><stop offset="1" stop-color="${C.primary}" stop-opacity="0"/>
+</linearGradient></defs>
+<style>
+  text { font-family: 'Segoe UI', Ubuntu, -apple-system, sans-serif; }
+  .rule { transform-box: fill-box; transform-origin: left; animation: grow 1.4s cubic-bezier(0.3, 0, 0.2, 1) both; }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) { .rule { animation: none; } }
+</style>
+<rect x="16" y="15" width="4" height="22" rx="2" fill="url(#g-accent)"/>
+<text x="32" y="32" fill="${C.text}" font-size="18" font-weight="700">Projects</text>
+<rect x="120" y="26" width="${W - 136}" height="1" fill="url(#g-rule)" class="rule"/>
+</svg>
+`;
+}
+
+async function projectCard([repo, lang, desc, tags], i) {
+  const w = 430, h = 178;
+  let stars = 0;
+  try {
+    const r = await fetch(`https://api.github.com/repos/Juskk59/${repo}`, { headers: { 'User-Agent': 'profile-sections' } });
+    if (r.ok) stars = (await r.json()).stargazers_count || 0;
+  } catch {}
+  const name = repo.replace(/-+$/, '');
+  const lines = wrap(desc, 13, w - 56).slice(0, 3);
+  let tx = 28;
+  const chips = [lang, ...tags]
+    .map((t, j) => {
+      const cw = Math.round(t.length * 6.6 + (j === 0 ? 34 : 22));
+      const g = `<g transform="translate(${tx} ${h - 46})">
+  <rect width="${cw}" height="24" rx="12" fill="${C.bg2}" stroke="${C.border}"/>
+  ${j === 0 ? `<circle cx="13" cy="12" r="4.5" fill="${LANG_COLOR[t] || C.light}"/>` : ''}
+  <text x="${j === 0 ? 24 : 11}" y="16" fill="${C.soft}" font-size="11.5" font-weight="600">${esc(t)}</text>
 </g>`;
-      y += 24 + (lines.length - 1) * lh + 22;
-      const sep = i < CONTENT.highlights.length - 1
-        ? `<rect x="${textX}" y="${y - 4}" width="${W - textX - 32}" height="1" fill="url(#g-sep)" class="fade" ${delay(i + 1, 0.14)}/>`
-        : '';
-      y += 18;
-      return g + sep;
+      tx += cw + 8;
+      return g;
     })
-    .join('\n');
-  const defs = `<linearGradient id="g-sep" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="${C.primary}" stop-opacity="0.5"/><stop offset="1" stop-color="${C.primary}" stop-opacity="0"/></linearGradient>`;
-  return frame(W, y + 6, `${title("Some things I've worked on", 'Real problems from real projects')}\n${items}`, { defs });
+    .join('');
+  const body = `
+<g class="rise" ${delay(i % 2, 0.12)}>
+  <g transform="translate(28 26)">
+    <rect width="30" height="30" rx="8" fill="${C.bg3}" stroke="${C.border}"/>
+    <path transform="translate(7 7)" fill="${C.light}" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/>
+  </g>
+  <text x="70" y="46" fill="${C.text}" font-size="16" font-weight="700">${esc(name)}</text>
+  <text x="${w - 28}" y="46" text-anchor="end" fill="${C.light}" font-size="16">↗</text>
+  ${lines.map((l, j) => `<text x="28" y="${84 + j * 20}" fill="${C.soft}" font-size="13">${esc(l)}</text>`).join('')}
+  ${chips}
+  <text x="${w - 28}" y="${h - 29}" text-anchor="end" fill="${C.muted}" font-size="12.5" font-family="${MONO}">★ ${stars}</text>
+</g>`;
+  return frame(w, h, body);
 }
 
 /* ----------------------------------------------------------------- stack */
@@ -279,7 +296,7 @@ async function stack() {
   const panels = [];
   for (const [gi, [label, items]] of CONTENT.stack.entries()) {
     const px = 32 + (gi % 2) * (panelW + 16);
-    const py = 88 + Math.floor(gi / 2) * (panelH + 16);
+    const py = 72 + Math.floor(gi / 2) * (panelH + 16);
     const icons = [];
     for (const [ii, [id, name]] of items.entries()) {
       const svg = (await loadIcon(id, n++)).replace('<svg', `<svg x="0" y="0" width="${icon}" height="${icon}"`);
@@ -294,26 +311,14 @@ async function stack() {
   ${icons.join('\n')}
 </g>`);
   }
-  const H = 88 + 2 * panelH + 16 + 30;
-  return frame(W, H, `${title('Tech stack', 'Tools I use day to day and things I have studied')}\n${panels.join('\n')}`);
-}
-
-/* ---------------------------------------------------------- stats header */
-function statsHeader() {
-  const lines = wrap(CONTENT.statsNote, 13.5, W - 64 - 16);
-  const H = 92 + lines.length * 21;
-  return frame(
-    W,
-    H,
-    `${title('GitHub stats', 'Updated daily by a GitHub Action')}
-<g class="rise" ${delay(2, 0.15)}>${lines.map((l, i) => `<text x="48" y="${100 + i * 21}" fill="${C.soft}" font-size="13.5">${esc(l)}</text>`).join('')}</g>`,
-  );
+  const H = 72 + 2 * panelH + 16 + 30;
+  return frame(W, H, `${title('Tech stack')}\n${panels.join('\n')}`);
 }
 
 /* ------------------------------------------------------------ experience */
 function experience() {
   const lineX = 44, textX = 76, maxW = W - textX - 40;
-  let y = 108;
+  let y = 92;
   const dots = [];
   const items = CONTENT.experience
     .map(([role, place, when, desc, current], i) => {
@@ -349,7 +354,7 @@ ${dots
 </g>`,
   )
   .join('\n')}`;
-  return frame(W, y - 8, `${title('Experience', 'Where I have been working and studying')}\n${timeline}\n${items}`, { defs, css });
+  return frame(W, y - 8, `${title('Experience')}\n${timeline}\n${items}`, { defs, css });
 }
 
 /* ---------------------------------------------------------------- footer */
@@ -395,12 +400,12 @@ async function main() {
   const files = {
     'hero.svg': hero(),
     'about.svg': about(),
-    'highlights.svg': highlights(),
+    'projects.svg': projectsTitle(),
     'stack.svg': await stack(),
-    'stats-header.svg': statsHeader(),
     'experience.svg': experience(),
     'footer.svg': footer(),
   };
+  for (const [i, p] of CONTENT.projects.entries()) files[`project-${p[0].replace(/-+$/, '').toLowerCase()}.svg`] = await projectCard(p, i);
   for (const [icon, label] of CONTENT.contacts) files[`btn-${icon}.svg`] = button(icon, label);
   for (const [name, svg] of Object.entries(files)) await writeFile(path.join(OUT, name), svg);
   console.log(`Wrote ${Object.keys(files).length} files to ${path.relative(ROOT, OUT)}`);

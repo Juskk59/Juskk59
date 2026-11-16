@@ -13,15 +13,24 @@
 </p>
 
 <p align="center">
-  <img src="assets/sections/highlights.svg" width="100%" alt="Some things I've worked on: Lighthouse performance from 65 to 95 on mobile, security fixes in payment and anti-fraud modules, a Tailwind-based theme migration, Python scripts that published 185 products, and zero-downtime security patching with Bash." />
+  <img src="assets/sections/projects.svg" width="100%" alt="Projects" />
 </p>
 
 <p align="center">
-  <img src="assets/sections/stack.svg" width="100%" alt="Tech stack: PHP, JavaScript, Python, Java, HTML, CSS, Tailwind, Alpine.js, Vue, React, Figma, Magento, Node.js, WordPress, MySQL, MongoDB, Redis, Git, GitHub, Linux and Bash." />
+  <a href="https://github.com/Juskk59/GameTracker"><img src="assets/sections/project-gametracker.svg" width="49%" alt="GameTracker: desktop app to organize and rate a personal game library (Python, Tkinter, MongoDB)" /></a>
+  <a href="https://github.com/Juskk59/ControleEstoque"><img src="assets/sections/project-controleestoque.svg" width="49%" alt="ControleEstoque: desktop inventory manager (Python, Tkinter, MongoDB)" /></a>
+</p>
+<p align="center">
+  <a href="https://github.com/Juskk59/Processamento-De-Imagens"><img src="assets/sections/project-processamento-de-imagens.svg" width="49%" alt="Processamento-De-Imagens: image segmentation and background removal (Python, OpenCV)" /></a>
+  <a href="https://github.com/Juskk59/Jokenpo"><img src="assets/sections/project-jokenpo.svg" width="49%" alt="Jokenpo: rock, paper, scissors in the browser (HTML, CSS, JavaScript)" /></a>
+</p>
+<p align="center">
+  <a href="https://github.com/Juskk59/MySQL-Features"><img src="assets/sections/project-mysql-features.svg" width="49%" alt="MySQL-Features: MySQL commands explored in class (SQL)" /></a>
+  <a href="https://github.com/Juskk59/Algoritmos-Java-SENAC-"><img src="assets/sections/project-algoritmos-java-senac.svg" width="49%" alt="Algoritmos-Java-SENAC: algorithms from the SENAC Java course (Java)" /></a>
 </p>
 
 <p align="center">
-  <img src="assets/sections/stats-header.svg" width="100%" alt="GitHub stats, updated daily and including private commits." />
+  <img src="assets/sections/stack.svg" width="100%" alt="Tech stack: PHP, JavaScript, Python, Java, HTML, CSS, Tailwind, Alpine.js, Vue, React, Figma, Magento, Node.js, WordPress, MySQL, MongoDB, Git, GitHub, Linux and Bash." />
 </p>
 
 <p align="center">

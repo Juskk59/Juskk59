@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="56" viewBox="0 0 880 56" fill="none" role="img">
+<defs><linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#d946ef"/><stop offset="0.5" stop-color="#a855f7"/><stop offset="1" stop-color="#6366f1"/>
+</linearGradient>
+<linearGradient id="g-rule" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#a855f7" stop-opacity="0.6"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+</linearGradient></defs>
+<style>
+  text { font-family: 'Segoe UI', Ubuntu, -apple-system, sans-serif; }
+  .rule { transform-box: fill-box; transform-origin: left; animation: grow 1.4s cubic-bezier(0.3, 0, 0.2, 1) both; }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) { .rule { animation: none; } }
+</style>
+<rect x="16" y="15" width="4" height="22" rx="2" fill="url(#g-accent)"/>
+<text x="32" y="32" fill="#ede9fe" font-size="18" font-weight="700">Projects</text>
+<rect x="120" y="26" width="744" height="1" fill="url(#g-rule)" class="rule"/>
+</svg>

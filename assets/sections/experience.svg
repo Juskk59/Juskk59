@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" fill="none" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="324" viewBox="0 0 880 324" fill="none" role="img">
 <defs>
   <linearGradient id="g-text" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0" stop-color="#e9d5ff"/><stop offset="1" stop-color="#a855f7"/>
@@ -41,49 +41,49 @@
   @keyframes flow { to { stroke-dashoffset: -16; } }
   .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2.2s ease-out infinite; }
   @keyframes pulse { from { transform: scale(1); opacity: 0.7; } to { transform: scale(2.6); opacity: 0; } }</style>
-<rect x="0.5" y="0.5" width="879" height="339" rx="16" fill="#0d0b14" stroke="#2a1f3d"/>
-<rect x="0.5" y="0.5" width="879" height="339" rx="16" fill="url(#g-glow)" class="glow"/>
-<rect x="0.5" y="0.5" width="879" height="339" rx="16" pathLength="1000" stroke="#c084fc" stroke-width="1.5"
+<rect x="0.5" y="0.5" width="879" height="323" rx="16" fill="#0d0b14" stroke="#2a1f3d"/>
+<rect x="0.5" y="0.5" width="879" height="323" rx="16" fill="url(#g-glow)" class="glow"/>
+<rect x="0.5" y="0.5" width="879" height="323" rx="16" pathLength="1000" stroke="#c084fc" stroke-width="1.5"
   stroke-dasharray="70 930" stroke-linecap="round" opacity="0.85" class="streak"/>
 <g class="rise">
   <rect x="32" y="27" width="4" height="22" rx="2" fill="url(#g-accent)"/>
   <text x="48" y="44" class="t">Experience</text>
-  <text x="48" y="64" class="s" font-size="12">Where I have been working and studying</text>
+  
 </g>
 
-<line x1="44" x2="44" y1="103" y2="263" stroke="url(#g-line)" stroke-width="2"/>
-<line x1="44" x2="44" y1="103" y2="263" stroke="#e9d5ff" stroke-width="2" stroke-dasharray="4 12" opacity="0.6" class="flow"/>
+<line x1="44" x2="44" y1="87" y2="247" stroke="url(#g-line)" stroke-width="2"/>
+<line x1="44" x2="44" y1="87" y2="247" stroke="#e9d5ff" stroke-width="2" stroke-dasharray="4 12" opacity="0.6" class="flow"/>
 <g class="fade" style="animation-delay:0.18s">
-  <circle cx="44" cy="103" r="7" fill="#c084fc" class="pulse"/>
-  <circle cx="44" cy="103" r="7" fill="#0d0b14" stroke="#c084fc" stroke-width="2.5"/>
-  <circle cx="44" cy="103" r="2.5" fill="#e9d5ff"/>
+  <circle cx="44" cy="87" r="7" fill="#c084fc" class="pulse"/>
+  <circle cx="44" cy="87" r="7" fill="#0d0b14" stroke="#c084fc" stroke-width="2.5"/>
+  <circle cx="44" cy="87" r="2.5" fill="#e9d5ff"/>
 </g>
 <g class="fade" style="animation-delay:0.36s">
   
-  <circle cx="44" cy="183" r="7" fill="#0d0b14" stroke="#6d28d9" stroke-width="2.5"/>
-  <circle cx="44" cy="183" r="2.5" fill="#6d28d9"/>
+  <circle cx="44" cy="167" r="7" fill="#0d0b14" stroke="#6d28d9" stroke-width="2.5"/>
+  <circle cx="44" cy="167" r="2.5" fill="#6d28d9"/>
 </g>
 <g class="fade" style="animation-delay:0.54s">
   
-  <circle cx="44" cy="263" r="7" fill="#0d0b14" stroke="#6d28d9" stroke-width="2.5"/>
-  <circle cx="44" cy="263" r="2.5" fill="#6d28d9"/>
+  <circle cx="44" cy="247" r="7" fill="#0d0b14" stroke="#6d28d9" stroke-width="2.5"/>
+  <circle cx="44" cy="247" r="2.5" fill="#6d28d9"/>
 </g>
 <g class="rise" style="animation-delay:0.18s">
-  <text x="76" y="108" fill="#ede9fe" font-size="16" font-weight="700">Junior Full Stack Developer</text>
-  <text x="844" y="108" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">Jan 2026 – Present</text>
-  <text x="76" y="129" fill="#c084fc" font-size="13" font-weight="600">Mage2 · Londrina, Brazil</text>
-  <text x="76" y="152" fill="#c9bfe6" font-size="13.5">Front end and back end for live online stores with PHP, JavaScript, Tailwind CSS and Alpine.js, from staging to deploy.</text>
+  <text x="76" y="92" fill="#ede9fe" font-size="16" font-weight="700">Junior Full Stack Developer</text>
+  <text x="844" y="92" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">Jan 2026 – Present</text>
+  <text x="76" y="113" fill="#c084fc" font-size="13" font-weight="600">Mage2 · Londrina, Brazil</text>
+  <text x="76" y="136" fill="#c9bfe6" font-size="13.5">Front end and back end for live online stores with PHP, JavaScript, Tailwind CSS and Alpine.js, from staging to deploy.</text>
 </g>
 <g class="rise" style="animation-delay:0.36s">
-  <text x="76" y="188" fill="#ede9fe" font-size="16" font-weight="700">Intern</text>
-  <text x="844" y="188" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">Apr 2025 – Dec 2025</text>
-  <text x="76" y="209" fill="#c084fc" font-size="13" font-weight="600">Mage2 Commerce · Londrina, Brazil</text>
-  <text x="76" y="232" fill="#c9bfe6" font-size="13.5">Layout and content changes with HTML, CSS, XML and JavaScript, plus technical support for clients.</text>
+  <text x="76" y="172" fill="#ede9fe" font-size="16" font-weight="700">Intern</text>
+  <text x="844" y="172" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">Apr 2025 – Dec 2025</text>
+  <text x="76" y="193" fill="#c084fc" font-size="13" font-weight="600">Mage2 Commerce · Londrina, Brazil</text>
+  <text x="76" y="216" fill="#c9bfe6" font-size="13.5">Layout and content changes with HTML, CSS, XML and JavaScript, plus technical support for clients.</text>
 </g>
 <g class="rise" style="animation-delay:0.54s">
-  <text x="76" y="268" fill="#ede9fe" font-size="16" font-weight="700">Systems Analysis and Development</text>
-  <text x="844" y="268" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">Mar 2023 – Dec 2025</text>
-  <text x="76" y="289" fill="#c084fc" font-size="13" font-weight="600">IFPR · Federal Institute of Paraná</text>
-  <text x="76" y="312" fill="#c9bfe6" font-size="13.5">Front end, back end with Python, Node.js, Java and C++, MySQL and MongoDB databases, and UX/UI with Figma.</text>
+  <text x="76" y="252" fill="#ede9fe" font-size="16" font-weight="700">Systems Analysis and Development</text>
+  <text x="844" y="252" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">Mar 2023 – Dec 2025</text>
+  <text x="76" y="273" fill="#c084fc" font-size="13" font-weight="600">IFPR · Federal Institute of Paraná</text>
+  <text x="76" y="296" fill="#c9bfe6" font-size="13.5">Front end, back end with Python, Node.js, Java and C++, MySQL and MongoDB databases, and UX/UI with Figma.</text>
 </g>
 </svg>
