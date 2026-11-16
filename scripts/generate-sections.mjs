@@ -62,46 +62,51 @@ const CONTENT = {
 };
 
 /* ------------------------------------------------------------------ hero */
-function hero() {
+async function hero() {
   const H = 300;
   const words = CONTENT.rotating
     .map((w, i) => `<text x="117" y="0" class="word w${i}" style="animation-delay:${i * 3}s" fill="url(#g-word)" font-size="17" font-weight="700">${esc(w)}</text>`)
     .join('');
 
-  /* ---- animated git graph on the right ---- */
-  const lane = { main: 160, feat: 92, fix: 228 };
-  const col = { main: C.light, feat: C.pink, fix: '#818cf8' };
-  const paths = {
-    main: 'M578 160 L826 160',
-    feat: 'M646 160 C664 160 664 92 682 92 L756 92 C770 92 770 160 784 160',
-    fix: 'M692 160 C708 160 708 228 724 228 L790 228 C808 228 808 160 826 160',
+  /* ---- solar system: languages orbiting a glowing core ---- */
+  const cx = 712, cy = 150, tilt = -14;
+  const rad = (tilt * Math.PI) / 180;
+  const orbit = (rx, ry) => {
+    const dx = rx * Math.cos(rad), dy = rx * Math.sin(rad);
+    const a = `${(cx - dx).toFixed(1)} ${(cy - dy).toFixed(1)}`, b = `${(cx + dx).toFixed(1)} ${(cy + dy).toFixed(1)}`;
+    return `M${a} A${rx} ${ry} ${tilt} 1 1 ${b} A${rx} ${ry} ${tilt} 1 1 ${a}`;
   };
-  const commits = [
-    ['main', 602, 0.5], ['main', 646, 0.65], ['main', 692, 0.8],
-    ['feat', 700, 1.45], ['feat', 742, 1.6],
-    ['fix', 757, 1.95],
-    ['main', 784, 2.25], ['main', 826, 2.55],
+  const orbits = [
+    { rx: 68, ry: 26, dur: 11, color: C.pink, planets: ['html', 'css'] },
+    { rx: 110, ry: 42, dur: 17, color: C.light, planets: ['js', 'python'] },
+    { rx: 150, ry: 58, dur: 25, color: '#818cf8', planets: ['php', 'java', 'mysql'] },
   ];
-  const draw = (k, d) =>
-    `<path d="${paths[k]}" stroke="${col[k]}" stroke-width="2.5" stroke-linecap="round" pathLength="1" class="draw" style="animation-delay:${d}s"/>
-  <path d="${paths[k]}" stroke="${col[k]}" stroke-width="8" stroke-linecap="round" opacity="0.18" pathLength="1" class="draw" style="animation-delay:${d}s"/>`;
-  const nodes = commits
-    .map(([k, x, d], i) => {
-      const y = lane[k];
-      return `<g class="pop" style="animation-delay:${d}s">
-    <circle cx="${x}" cy="${y}" r="7.5" fill="${C.bg}" stroke="${col[k]}" stroke-width="2.5"/>
-    <circle cx="${x}" cy="${y}" r="3" fill="${col[k]}" class="wave" style="animation-delay:${(3 + i * 0.35).toFixed(2)}s"/>
-  </g>`;
-    })
-    .join('\n  ');
-  const packet = (k, dur, begin) => `<circle r="3.2" fill="${C.pale}" opacity="0">
-    <animateMotion dur="${dur}s" begin="${begin}s" repeatCount="indefinite" path="${paths[k]}"/>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/>
-  </circle>`;
-  const tag = (x, y, text, color) => `<g transform="translate(${x} ${y})"><g class="pop" style="animation-delay:2.8s">
-    <rect x="${-text.length * 3.7 - 9}" y="-11" width="${text.length * 7.4 + 18}" height="22" rx="11" fill="${C.bg2}" stroke="${color}" stroke-opacity="0.6"/>
-    <text text-anchor="middle" y="4" fill="${color}" font-size="11" font-family="${MONO}" font-weight="600">${esc(text)}</text>
-  </g></g>`;
+  let n = 100, planetClips = '';
+  const orbitLines = [], planets = [];
+  for (const [oi, o] of orbits.entries()) {
+    const d = orbit(o.rx, o.ry);
+    orbitLines.push(`<path d="${d}" stroke="${o.color}" stroke-width="1.2" stroke-opacity="0.35" pathLength="1" class="draw" style="animation-delay:${0.3 + oi * 0.25}s"/>
+  <path d="${d}" stroke="${o.color}" stroke-width="1.6" stroke-opacity="0.7" stroke-dasharray="0.02 0.08" pathLength="1" class="flow" style="animation-duration:${o.dur * 1.5}s"/>`);
+    for (const [pi, id] of o.planets.entries()) {
+      const icon = (await loadIcon(id, n)).replace('<svg', '<svg x="-15" y="-15" width="30" height="30"');
+      const phase = -o.dur * (pi / o.planets.length + [0.1, 0.4, 0.78][oi]);
+      planetClips += `<clipPath id="pc${n}"><circle r="15"/></clipPath>`;
+      planets.push(`<g>
+    <animateMotion dur="${o.dur}s" begin="${phase.toFixed(2)}s" repeatCount="indefinite" path="${d}"/>
+    <circle r="22" fill="${o.color}" opacity="0.18" class="halo" style="animation-delay:${(-pi * 0.8).toFixed(1)}s"/>
+    <g clip-path="url(#pc${n})">${icon}</g>
+    <circle r="15" stroke="${o.color}" stroke-width="1.5" stroke-opacity="0.85"/>
+  </g>`);
+      n++;
+    }
+  }
+  // a few twinkling stars, same positions on every build
+  let seed = 11;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const stars = Array.from({ length: 22 }, (_, i) => {
+    const x = 540 + rnd() * 320, y = 18 + rnd() * 264, r = 0.6 + rnd() * 1.1;
+    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(2)}" fill="${C.pale}" class="twinkle" style="animation-delay:${(-rnd() * 4).toFixed(2)}s;animation-duration:${(2.5 + rnd() * 3).toFixed(2)}s"/>`;
+  }).join('');
 
   const css = `
   .orb { transform-box: fill-box; transform-origin: center; }
@@ -115,16 +120,18 @@ function hero() {
   @keyframes shine { 0% { transform: translateX(-260px); } 55%, 100% { transform: translateX(720px); } }
   .word { opacity: 0; animation: word 12s ease-in-out infinite both; }
   @keyframes word { 0% { opacity: 0; transform: translateY(8px); } 4%, 21% { opacity: 1; transform: none; } 25%, 100% { opacity: 0; transform: translateY(-8px); } }
-  .draw { stroke-dasharray: 1; animation: draw 1.1s cubic-bezier(0.5, 0, 0.2, 1) both; }
+  .draw { stroke-dasharray: 1; animation: draw 1.4s cubic-bezier(0.5, 0, 0.2, 1) both; }
   @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-  .pop { transform-box: fill-box; transform-origin: center; animation: pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
-  @keyframes pop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: none; } }
-  .wave { transform-box: fill-box; transform-origin: center; animation: wave 4s ease-in-out infinite; }
-  @keyframes wave { 0%, 100% { transform: scale(1); fill-opacity: 1; } 8% { transform: scale(1.9); fill-opacity: 0.6; } 16% { transform: scale(1); fill-opacity: 1; } }
-  .ring { transform-box: fill-box; transform-origin: center; animation: ring 2.2s ease-out 3s infinite both; }
-  @keyframes ring { from { transform: scale(1); opacity: 0.8; } to { transform: scale(2.8); opacity: 0; } }
-  .future { animation: dash 1.2s linear infinite; }
-  @keyframes dash { to { stroke-dashoffset: -12; } }
+  .flow { animation: flow 30s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset: -1; } }
+  .spin { transform-box: fill-box; transform-origin: center; animation: spin 18s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .breathe { transform-box: fill-box; transform-origin: center; animation: breathe 4s ease-in-out infinite alternate; }
+  @keyframes breathe { from { transform: scale(0.85); opacity: 0.7; } to { transform: scale(1.15); opacity: 1; } }
+  .halo { transform-box: fill-box; transform-origin: center; animation: halo 2.4s ease-in-out infinite alternate; }
+  @keyframes halo { from { transform: scale(0.8); opacity: 0.08; } to { transform: scale(1.1); opacity: 0.28; } }
+  .twinkle { animation: twinkle 3s ease-in-out infinite alternate; }
+  @keyframes twinkle { from { opacity: 0.1; } to { opacity: 0.9; } }
   @media (prefers-reduced-motion: reduce) { .word { animation: none; } .w0 { opacity: 1; } }`;
 
   const defs = `
@@ -142,7 +149,14 @@ function hero() {
   </linearGradient>
   <linearGradient id="g-word" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0" stop-color="${C.pink}"/><stop offset="1" stop-color="${C.light}"/>
-  </linearGradient>`;
+  </linearGradient>
+  <radialGradient id="g-core" cx="0.4" cy="0.35" r="0.7">
+    <stop offset="0" stop-color="#fff"/><stop offset="0.35" stop-color="${C.pale}"/><stop offset="0.75" stop-color="${C.primary}"/><stop offset="1" stop-color="${C.deep}"/>
+  </radialGradient>
+  <radialGradient id="g-corona">
+    <stop offset="0" stop-color="${C.light}" stop-opacity="0.55"/><stop offset="1" stop-color="${C.primary}" stop-opacity="0"/>
+  </radialGradient>
+  ${planetClips}`;
 
   const body = `
 <g clip-path="url(#card)">
@@ -168,19 +182,14 @@ function hero() {
 <text x="50" y="242" fill="${C.muted}" font-size="12.5" font-family="${MONO}" class="rise" ${delay(4, 0.15)}>${esc(CONTENT.stackLine)}</text>
 
 <g>
-  ${tag(548, 160, 'main', col.main)}
-  ${draw('main', 0.3)}
-  <path d="M836 160 L856 160" stroke="${col.main}" stroke-width="2" stroke-dasharray="3 3" opacity="0.5" class="future"/>
-  ${draw('feat', 0.9)}
-  ${draw('fix', 1.3)}
-  ${nodes}
-  <circle cx="826" cy="160" r="7.5" fill="none" stroke="${C.pale}" stroke-width="2" class="ring"/>
-  ${packet('main', 3.2, 3)}
-  ${packet('feat', 3.8, 3.6)}
-  ${packet('fix', 4.4, 4.4)}
-  ${tag(720, 62, 'feature/ui', col.feat)}
-  ${tag(757, 258, 'hotfix', col.fix)}
-  ${tag(826, 128, 'HEAD', C.pale)}
+  ${stars}
+  <g class="fade" style="animation-delay:0.2s">${orbitLines.join('\n  ')}</g>
+  <circle cx="${cx}" cy="${cy}" r="46" fill="url(#g-corona)" class="breathe"/>
+  <circle cx="${cx}" cy="${cy}" r="27" stroke="${C.pale}" stroke-width="1.2" stroke-dasharray="2 6" stroke-opacity="0.6" class="spin"/>
+  <circle cx="${cx}" cy="${cy}" r="17" fill="url(#g-core)" class="rise" style="animation-delay:0.2s"/>
+  <g class="fade" style="animation-delay:1.1s">
+  ${planets.join('\n  ')}
+  </g>
 </g>`;
   return frame(W, H, body, { defs, css, glow: false });
 }
@@ -413,7 +422,7 @@ function footer() {
 async function main() {
   await mkdir(OUT, { recursive: true });
   const files = {
-    'hero.svg': hero(),
+    'hero.svg': await hero(),
     'about.svg': about(),
     'projects.svg': projectsTitle(),
     'stack.svg': await stack(),
