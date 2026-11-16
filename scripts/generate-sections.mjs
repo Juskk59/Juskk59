@@ -24,7 +24,6 @@ const W = 880;
 const CONTENT = {
   name: 'Julio Cesar Cester',
   role: 'Junior Full Stack Developer',
-  location: 'Based in Londrina, Brazil',
   rotating: ['front ends', 'back ends', 'integrations', 'automations'],
   stackLine: 'PHP  ·  JavaScript  ·  Python  ·  SQL',
 
@@ -65,27 +64,44 @@ const CONTENT = {
 /* ------------------------------------------------------------------ hero */
 function hero() {
   const H = 300;
-  const code = [
-    [['k', 'const '], ['p', 'julio'], ['x', ' = {']],
-    [['x', '  '], ['p', 'role'], ['x', ': '], ['s', "'Full Stack Dev'"], ['x', ',']],
-    [['x', '  '], ['p', 'stack'], ['x', ': ['], ['s', "'PHP'"], ['x', ', '], ['s', "'JS'"], ['x', ', '], ['s', "'Python'"], ['x', '],']],
-    [['x', '  '], ['p', 'based'], ['x', ': '], ['s', "'Londrina, BR'"], ['x', ',']],
-    [['x', '  '], ['p', 'learning'], ['x', ': '], ['b', 'true'], ['x', ',']],
-    [['x', '};']],
-  ];
-  const tokenColor = { k: C.light, p: C.pale, s: '#a5b4fc', b: '#f0abfc', x: C.muted };
-  const codeLines = code
-    .map(
-      (line, i) =>
-        `<text x="24" y="${66 + i * 21}" font-family="${MONO}" font-size="12.5" class="rise" ${delay(i, 0.12, 0.6)}>${line
-          .map(([t, v]) => `<tspan fill="${tokenColor[t]}">${esc(v).replace(/ /g, '&#160;')}</tspan>`)
-          .join('')}</text>`,
-    )
-    .join('\n');
-
   const words = CONTENT.rotating
-    .map((w, i) => `<text x="112" y="0" class="word w${i}" style="animation-delay:${i * 3}s" fill="url(#g-word)" font-size="17" font-weight="700">${esc(w)}</text>`)
+    .map((w, i) => `<text x="117" y="0" class="word w${i}" style="animation-delay:${i * 3}s" fill="url(#g-word)" font-size="17" font-weight="700">${esc(w)}</text>`)
     .join('');
+
+  /* ---- animated git graph on the right ---- */
+  const lane = { main: 160, feat: 92, fix: 228 };
+  const col = { main: C.light, feat: C.pink, fix: '#818cf8' };
+  const paths = {
+    main: 'M578 160 L826 160',
+    feat: 'M646 160 C664 160 664 92 682 92 L756 92 C770 92 770 160 784 160',
+    fix: 'M692 160 C708 160 708 228 724 228 L790 228 C808 228 808 160 826 160',
+  };
+  const commits = [
+    ['main', 602, 0.5], ['main', 646, 0.65], ['main', 692, 0.8],
+    ['feat', 700, 1.45], ['feat', 742, 1.6],
+    ['fix', 757, 1.95],
+    ['main', 784, 2.25], ['main', 826, 2.55],
+  ];
+  const draw = (k, d) =>
+    `<path d="${paths[k]}" stroke="${col[k]}" stroke-width="2.5" stroke-linecap="round" pathLength="1" class="draw" style="animation-delay:${d}s"/>
+  <path d="${paths[k]}" stroke="${col[k]}" stroke-width="8" stroke-linecap="round" opacity="0.18" pathLength="1" class="draw" style="animation-delay:${d}s"/>`;
+  const nodes = commits
+    .map(([k, x, d], i) => {
+      const y = lane[k];
+      return `<g class="pop" style="animation-delay:${d}s">
+    <circle cx="${x}" cy="${y}" r="7.5" fill="${C.bg}" stroke="${col[k]}" stroke-width="2.5"/>
+    <circle cx="${x}" cy="${y}" r="3" fill="${col[k]}" class="wave" style="animation-delay:${(3 + i * 0.35).toFixed(2)}s"/>
+  </g>`;
+    })
+    .join('\n  ');
+  const packet = (k, dur, begin) => `<circle r="3.2" fill="${C.pale}" opacity="0">
+    <animateMotion dur="${dur}s" begin="${begin}s" repeatCount="indefinite" path="${paths[k]}"/>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/>
+  </circle>`;
+  const tag = (x, y, text, color) => `<g transform="translate(${x} ${y})"><g class="pop" style="animation-delay:2.8s">
+    <rect x="${-text.length * 3.7 - 9}" y="-11" width="${text.length * 7.4 + 18}" height="22" rx="11" fill="${C.bg2}" stroke="${color}" stroke-opacity="0.6"/>
+    <text text-anchor="middle" y="4" fill="${color}" font-size="11" font-family="${MONO}" font-weight="600">${esc(text)}</text>
+  </g></g>`;
 
   const css = `
   .orb { transform-box: fill-box; transform-origin: center; }
@@ -99,17 +115,21 @@ function hero() {
   @keyframes shine { 0% { transform: translateX(-260px); } 55%, 100% { transform: translateX(720px); } }
   .word { opacity: 0; animation: word 12s ease-in-out infinite both; }
   @keyframes word { 0% { opacity: 0; transform: translateY(8px); } 4%, 21% { opacity: 1; transform: none; } 25%, 100% { opacity: 0; transform: translateY(-8px); } }
-  .float { animation: float 6s ease-in-out infinite alternate; }
-  @keyframes float { from { transform: translateY(-5px); } to { transform: translateY(5px); } }
-  .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2s ease-out infinite; }
-  @keyframes pulse { from { transform: scale(1); opacity: 0.8; } to { transform: scale(3); opacity: 0; } }
-  .blink { animation: blink 1s steps(1) infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
+  .draw { stroke-dasharray: 1; animation: draw 1.1s cubic-bezier(0.5, 0, 0.2, 1) both; }
+  @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  .pop { transform-box: fill-box; transform-origin: center; animation: pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+  @keyframes pop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: none; } }
+  .wave { transform-box: fill-box; transform-origin: center; animation: wave 4s ease-in-out infinite; }
+  @keyframes wave { 0%, 100% { transform: scale(1); fill-opacity: 1; } 8% { transform: scale(1.9); fill-opacity: 0.6; } 16% { transform: scale(1); fill-opacity: 1; } }
+  .ring { transform-box: fill-box; transform-origin: center; animation: ring 2.2s ease-out 3s infinite both; }
+  @keyframes ring { from { transform: scale(1); opacity: 0.8; } to { transform: scale(2.8); opacity: 0; } }
+  .future { animation: dash 1.2s linear infinite; }
+  @keyframes dash { to { stroke-dashoffset: -12; } }
   @media (prefers-reduced-motion: reduce) { .word { animation: none; } .w0 { opacity: 1; } }`;
 
   const defs = `
   <clipPath id="card"><rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="16"/></clipPath>
-  <clipPath id="name"><text x="48" y="138" font-size="46" font-weight="800" letter-spacing="-0.5">${esc(CONTENT.name)}</text></clipPath>
+  <clipPath id="name"><text x="48" y="124" font-size="46" font-weight="800" letter-spacing="-0.5">${esc(CONTENT.name)}</text></clipPath>
   <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
   <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="${C.border}"/></pattern>
   <radialGradient id="fadeMask" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#fff" stop-opacity="0.9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
@@ -134,38 +154,33 @@ function hero() {
   </g>
 </g>
 
-<g class="rise" transform="translate(48 52)">
-  <rect width="214" height="28" rx="14" fill="${C.bg2}" stroke="${C.border}"/>
-  <circle cx="16" cy="14" r="4" fill="${C.light}"/>
-  <circle cx="16" cy="14" r="4" fill="${C.light}" class="pulse"/>
-  <text x="30" y="18.5" fill="${C.soft}" font-size="12" font-weight="600">${esc(CONTENT.location)}</text>
-</g>
-
 <g class="rise" ${delay(1, 0.15)}>
   <g clip-path="url(#name)">
-    <rect x="40" y="90" width="560" height="60" fill="url(#g-name)"/>
-    <rect x="0" y="90" width="160" height="60" fill="url(#g-shine)" class="shine" opacity="0.6"/>
+    <rect x="40" y="76" width="560" height="60" fill="url(#g-name)"/>
+    <rect x="0" y="76" width="160" height="60" fill="url(#g-shine)" class="shine" opacity="0.6"/>
   </g>
 </g>
-<text x="50" y="176" fill="${C.soft}" font-size="21" font-weight="600" class="rise" ${delay(2, 0.15)}>${esc(CONTENT.role)}</text>
-<g transform="translate(50 214)" class="rise" ${delay(3, 0.15)}>
+<text x="50" y="164" fill="${C.soft}" font-size="21" font-weight="600" class="rise" ${delay(2, 0.15)}>${esc(CONTENT.role)}</text>
+<g transform="translate(50 204)" class="rise" ${delay(3, 0.15)}>
   <text x="0" y="0" fill="${C.muted}" font-size="17">I like building</text>
   ${words}
 </g>
-<text x="50" y="256" fill="${C.muted}" font-size="12.5" font-family="${MONO}" class="rise" ${delay(4, 0.15)}>${esc(CONTENT.stackLine)}</text>
+<text x="50" y="242" fill="${C.muted}" font-size="12.5" font-family="${MONO}" class="rise" ${delay(4, 0.15)}>${esc(CONTENT.stackLine)}</text>
 
-<g transform="translate(544 52)">
-  <g class="float">
-    <rect width="292" height="196" rx="14" fill="${C.bg2}" fill-opacity="0.92" stroke="${C.border}"/>
-    <rect width="292" height="34" rx="14" fill="${C.bg3}"/>
-    <rect y="20" width="292" height="14" fill="${C.bg3}"/>
-    <circle cx="20" cy="17" r="5" fill="#f472b6" opacity="0.8"/>
-    <circle cx="38" cy="17" r="5" fill="${C.light}" opacity="0.8"/>
-    <circle cx="56" cy="17" r="5" fill="${C.indigo}" opacity="0.8"/>
-    <text x="146" y="21" text-anchor="middle" fill="${C.muted}" font-size="11" font-family="${MONO}">about.js</text>
-    ${codeLines}
-    <rect x="44" y="167" width="8" height="15" fill="${C.light}" class="blink"/>
-  </g>
+<g>
+  ${tag(548, 160, 'main', col.main)}
+  ${draw('main', 0.3)}
+  <path d="M836 160 L856 160" stroke="${col.main}" stroke-width="2" stroke-dasharray="3 3" opacity="0.5" class="future"/>
+  ${draw('feat', 0.9)}
+  ${draw('fix', 1.3)}
+  ${nodes}
+  <circle cx="826" cy="160" r="7.5" fill="none" stroke="${C.pale}" stroke-width="2" class="ring"/>
+  ${packet('main', 3.2, 3)}
+  ${packet('feat', 3.8, 3.6)}
+  ${packet('fix', 4.4, 4.4)}
+  ${tag(720, 62, 'feature/ui', col.feat)}
+  ${tag(757, 258, 'hotfix', col.fix)}
+  ${tag(826, 128, 'HEAD', C.pale)}
 </g>`;
   return frame(W, H, body, { defs, css, glow: false });
 }
