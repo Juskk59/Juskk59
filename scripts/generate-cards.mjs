@@ -73,6 +73,61 @@ async function gql(query, variables = {}) {
   return json.data;
 }
 
+async function rest(p) {
+  const res = await fetch(`https://api.github.com${p}`, {
+    headers: {
+      Authorization: `token ${TOKEN}`,
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'profile-cards-generator',
+    },
+  });
+  if (!res.ok) throw new Error(`REST ${res.status} on ${p.split('?')[0]}`);
+  return res.json();
+}
+
+/**
+ * GraphQL reports commits made in some organization repositories as "restricted",
+ * even to the account's own token. The commit search API does see them, so it is
+ * used for commit counts and for the languages of the repositories I commit to.
+ * Repository names stay in memory only.
+ */
+async function commitSearch() {
+  const since = new Date(Date.now() - 365 * 864e5).toISOString().slice(0, 10);
+  const url = (extra, perPage, page = 1) =>
+    `/search/commits?q=${encodeURIComponent(`author:${USER} ${extra}`.trim())}&per_page=${perPage}&page=${page}`;
+
+  const allTime = (await rest(url('', 1))).total_count;
+  const perRepo = new Map();
+  let year = 0, sampled = 0;
+  for (let page = 1; page <= 10; page++) {
+    const r = await rest(url(`author-date:>=${since}`, 100, page));
+    year = r.total_count;
+    for (const item of r.items) {
+      const repo = item.repository;
+      sampled++;
+      if (repo.fork) continue;
+      perRepo.set(repo.full_name, (perRepo.get(repo.full_name) || 0) + 1);
+    }
+    if (r.items.length < 100 || sampled >= year) break;
+  }
+
+  const langs = new Map();
+  const top = [...perRepo.entries()].sort((a, b) => b[1] - a[1]).slice(0, 40);
+  for (const [fullName, commits] of top) {
+    let bytes;
+    try {
+      bytes = await rest(`/repos/${fullName}/languages`);
+    } catch {
+      continue;
+    }
+    const total = Object.values(bytes).reduce((a, b) => a + b, 0);
+    if (!total) continue;
+    for (const [name, size] of Object.entries(bytes)) langs.set(name, (langs.get(name) || 0) + commits * (size / total));
+  }
+  const publicYear = (await rest(url(`author-date:>=${since} is:public`, 1))).total_count;
+  return { allTime, year, privateShare: year ? (year - publicYear) / year : 0, langs };
+}
+
 /* ------------------------------------------------------------ data fetch */
 const Q_BASE = `
 query($login: String!) {
@@ -162,13 +217,27 @@ async function fetchData() {
     langNote = 'by code size across my repositories';
   }
 
+  let search = null;
+  try {
+    search = await commitSearch();
+  } catch (err) {
+    console.warn(`Commit search unavailable, using GraphQL numbers only: ${err.message}`);
+  }
+  if (search && search.langs.size) {
+    langs.clear();
+    for (const [k, v] of search.langs) langs.set(k, v);
+    langNote = 'weighted by my commits · last 12 months';
+  }
+
   const lastYearDays = cc.contributionCalendar.weeks.flatMap((w) => w.contributionDays);
   return {
     since: new Date(base.createdAt).getUTCFullYear(),
     allTime,
+    commitsAllTime: Math.max(search?.allTime || 0, cc.totalCommitContributions),
+    privateShare: search?.privateShare || 0,
     year: {
       total: cc.contributionCalendar.totalContributions,
-      commits: cc.totalCommitContributions,
+      commits: Math.max(search?.year || 0, cc.totalCommitContributions),
       prs: cc.totalPullRequestContributions,
       reviews: cc.totalPullRequestReviewContributions,
       issues: cc.totalIssueContributions,
@@ -198,6 +267,8 @@ function mockData() {
   return {
     since: start.getUTCFullYear(),
     allTime: days.reduce((s, [, c]) => s + c, 0),
+    commitsAllTime: Math.round(total * 1.3),
+    privateShare: 0.93,
     year: { total, commits: Math.round(total * 0.86), prs: 41, reviews: 17, issues: 9, private: 0 },
     days,
     lastYearDays,
@@ -271,9 +342,9 @@ function overviewCard(data, m) {
   const ratio = m.longest ? Math.min(1, m.current / m.longest) : 0;
   const stats = [
     ['COMMITS · 12 MO', fmt(data.year.commits)],
-    ['PULL REQUESTS', fmt(data.year.prs)],
-    ['CODE REVIEWS', fmt(data.year.reviews)],
-    ['LONGEST STREAK', `${fmt(m.longest)}d`],
+    ['COMMITS · ALL TIME', fmt(data.commitsAllTime)],
+    ['IN PRIVATE REPOS', `${Math.round(data.privateShare * 100)}%`],
+    ['LONGEST STREAK', `${fmt(m.longest)} days`],
     ['ACTIVE DAYS · 12 MO', fmt(m.activeDays)],
     ['MOST ACTIVE ON', WEEKDAYS[m.topWeekday].slice(0, 3)],
   ];
@@ -460,8 +531,9 @@ async function main() {
   await writeFile(path.join(OUT_DIR, 'languages.svg'), languagesCard(data));
   await writeFile(path.join(OUT_DIR, 'activity.svg'), activityCard(data, m));
   console.log(
-    `Cards written to ${path.relative(ROOT, OUT_DIR)} · all-time ${data.allTime} · 12mo ${data.year.total} · streak ${m.current}/${m.longest}` +
-      (data.year.private ? ` · ${data.year.private} restricted (token cannot see private repos)` : ''),
+    `Cards written to ${path.relative(ROOT, OUT_DIR)} · contributions ${data.allTime} (12mo ${data.year.total})` +
+      ` · commits ${data.commitsAllTime} (12mo ${data.year.commits}, ${Math.round(data.privateShare * 100)}% private)` +
+      ` · streak ${m.current}/${m.longest} · ${data.langs.size} languages`,
   );
 }
 
