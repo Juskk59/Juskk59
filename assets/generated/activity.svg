@@ -55,7 +55,7 @@
 <g transform="translate(370 24)">
   <rect width="150" height="34" rx="9" fill="#151021" stroke="#2a1f3d"/>
   <text x="12" y="14" class="lbl" font-size="8.5">TOTAL · 12 MO</text>
-  <text x="12" y="28" fill="#ede9fe" font-size="12.5" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">1,301</text>
+  <text x="12" y="28" fill="#ede9fe" font-size="12.5" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">1,303</text>
 </g>
 <g transform="translate(528 24)">
   <rect width="150" height="34" rx="9" fill="#151021" stroke="#2a1f3d"/>
@@ -65,7 +65,7 @@
 <g transform="translate(686 24)">
   <rect width="150" height="34" rx="9" fill="#151021" stroke="#2a1f3d"/>
   <text x="12" y="14" class="lbl" font-size="8.5">WEEKLY AVERAGE</text>
-  <text x="12" y="28" fill="#ede9fe" font-size="12.5" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">25.0</text>
+  <text x="12" y="28" fill="#ede9fe" font-size="12.5" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">25.1</text>
 </g>
 </g>
 <line x1="48" x2="832" y1="216" y2="216" stroke="#211933" />
