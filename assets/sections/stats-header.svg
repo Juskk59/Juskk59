@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="134" viewBox="0 0 880 134" fill="none" role="img">
+<defs>
+  <linearGradient id="g-text" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#e9d5ff"/><stop offset="1" stop-color="#a855f7"/>
+  </linearGradient>
+  <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#d946ef"/><stop offset="0.5" stop-color="#a855f7"/><stop offset="1" stop-color="#6366f1"/>
+  </linearGradient>
+  <linearGradient id="g-streak" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#a855f7" stop-opacity="0"/>
+    <stop offset="0.5" stop-color="#e9d5ff"/>
+    <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+  </linearGradient>
+  <radialGradient id="g-glow" cx="1" cy="0" r="1">
+    <stop offset="0" stop-color="#a855f7" stop-opacity="0.22"/>
+    <stop offset="0.6" stop-color="#a855f7" stop-opacity="0"/>
+  </radialGradient>
+  
+</defs>
+<style>
+  text { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', -apple-system, sans-serif; }
+  .t { fill: #ede9fe; font-size: 18px; font-weight: 700; }
+  .s { fill: #8b80a8; font-size: 11px; }
+  .lbl { fill: #8b80a8; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; }
+  .val { fill: #ede9fe; font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
+  .fade { animation: fade 0.7s ease-out both; }
+  .rise { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .reveal { transform-box: view-box; transform-origin: 0 0; animation: reveal 1.6s cubic-bezier(0.3, 0, 0.2, 1) 0.2s both; }
+  .streak { animation: streak 7s linear infinite; }
+  .glow { animation: glow 6s ease-in-out infinite alternate; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes reveal { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes streak { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1000; } }
+  @keyframes glow { from { opacity: 0.55; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .fade, .rise, .reveal, .streak, .glow, .anim { animation: none !important; }
+  }</style>
+<rect x="0.5" y="0.5" width="879" height="133" rx="16" fill="#0d0b14" stroke="#2a1f3d"/>
+<rect x="0.5" y="0.5" width="879" height="133" rx="16" fill="url(#g-glow)" class="glow"/>
+<rect x="0.5" y="0.5" width="879" height="133" rx="16" pathLength="1000" stroke="#c084fc" stroke-width="1.5"
+  stroke-dasharray="70 930" stroke-linecap="round" opacity="0.85" class="streak"/>
+<g class="rise">
+  <rect x="32" y="27" width="4" height="22" rx="2" fill="url(#g-accent)"/>
+  <text x="48" y="44" class="t">GitHub stats</text>
+  <text x="48" y="64" class="s" font-size="12">Updated daily by a GitHub Action</text>
+</g>
+<g class="rise" style="animation-delay:0.30s"><text x="48" y="100" fill="#c9bfe6" font-size="13.5">Most of my work lives in private repositories, so it does not show up as public code. These cards update every day and include</text><text x="48" y="121" fill="#c9bfe6" font-size="13.5">my private commits (only the numbers, never code or repository names).</text></g>
+</svg>

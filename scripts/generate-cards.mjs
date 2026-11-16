@@ -18,6 +18,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { C, FONT, MONO, esc, delay, frame } from './theme.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.resolve(process.env.OUT_DIR || path.join(ROOT, 'assets', 'generated'));
@@ -29,27 +30,10 @@ const EXCLUDED_LANGS = (process.env.EXCLUDE_LANGS || '')
   .map((s) => s.trim().toLowerCase())
   .filter(Boolean);
 
-/* ------------------------------------------------------------------ theme */
-const C = {
-  bg: '#0d0b14',
-  bg2: '#151021',
-  border: '#2a1f3d',
-  grid: '#211933',
-  text: '#ede9fe',
-  muted: '#8b80a8',
-  primary: '#a855f7',
-  light: '#c084fc',
-  pale: '#e9d5ff',
-  deep: '#6d28d9',
-};
 // purple ramp for languages (largest share first)
 const LANG_COLORS = ['#c084fc', '#a855f7', '#8b5cf6', '#7c3aed', '#6d28d9', '#d8b4fe', '#4c1d95', '#5b4a7a'];
-const FONT = "'Segoe UI', Ubuntu, 'Helvetica Neue', -apple-system, sans-serif";
-const MONO = "'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace";
-
 /* ---------------------------------------------------------------- helpers */
 const fmt = (n) => Number(n || 0).toLocaleString('en-US');
-const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -308,40 +292,6 @@ function computeMetrics(data) {
   return { longest, current, best, topWeekday, activeDays };
 }
 
-/* -------------------------------------------------------------- svg bits */
-function frame(w, h, body, extraDefs = '') {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" fill="none" role="img">
-<defs>
-  <linearGradient id="g-text" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="${C.pale}"/><stop offset="1" stop-color="${C.primary}"/>
-  </linearGradient>
-  <radialGradient id="g-glow" cx="1" cy="0" r="1">
-    <stop offset="0" stop-color="${C.primary}" stop-opacity="0.22"/>
-    <stop offset="0.6" stop-color="${C.primary}" stop-opacity="0"/>
-  </radialGradient>
-  ${extraDefs}
-</defs>
-<style>
-  text { font-family: ${FONT}; }
-  .t { fill: ${C.text}; font-size: 16px; font-weight: 700; }
-  .s { fill: ${C.muted}; font-size: 11px; }
-  .lbl { fill: ${C.muted}; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; }
-  .val { fill: ${C.text}; font-size: 16px; font-weight: 700; font-family: ${MONO}; }
-  .fade { animation: fade 0.6s ease-out both; }
-  .reveal { transform-box: view-box; transform-origin: 0 0; animation: reveal 1.6s cubic-bezier(0.3, 0, 0.2, 1) 0.2s both; }
-  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes reveal { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  @media (prefers-reduced-motion: reduce) { .fade, .reveal { animation: none; } }
-</style>
-<rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="14" fill="${C.bg}" stroke="${C.border}"/>
-<rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="14" fill="url(#g-glow)"/>
-${body}
-</svg>
-`;
-}
-
-const delay = (i) => `style="animation-delay:${(0.08 * i).toFixed(2)}s"`;
-
 function overviewCard(data, m) {
   const W = 420, H = 230;
   const ringR = 34, circ = 2 * Math.PI * ringR;
@@ -520,7 +470,7 @@ ${monthLabels}
   <circle cx="${pkx.toFixed(1)}" cy="${pky.toFixed(1)}" r="4" fill="${C.pale}"/>
 </g>
 <text x="${peakLabelX.toFixed(1)}" y="${(pky - 14).toFixed(1)}" text-anchor="middle" fill="${C.pale}" font-size="11" font-weight="700" font-family="${MONO}" class="fade" style="animation-delay:1.5s">peak ${fmt(weeks[peakIdx].count)}/wk</text>`,
-    defs,
+    { defs },
   );
 }
 

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" fill="none" role="img">
+<defs>
+  <linearGradient id="g-text" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#e9d5ff"/><stop offset="1" stop-color="#a855f7"/>
+  </linearGradient>
+  <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#d946ef"/><stop offset="0.5" stop-color="#a855f7"/><stop offset="1" stop-color="#6366f1"/>
+  </linearGradient>
+  <linearGradient id="g-streak" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#a855f7" stop-opacity="0"/>
+    <stop offset="0.5" stop-color="#e9d5ff"/>
+    <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+  </linearGradient>
+  <radialGradient id="g-glow" cx="1" cy="0" r="1">
+    <stop offset="0" stop-color="#a855f7" stop-opacity="0.22"/>
+    <stop offset="0.6" stop-color="#a855f7" stop-opacity="0"/>
+  </radialGradient>
+  
+  <clipPath id="card"><rect x="1" y="1" width="878" height="298" rx="16"/></clipPath>
+  <clipPath id="name"><text x="48" y="138" font-size="46" font-weight="800" letter-spacing="-0.5">Julio Cesar Cester</text></clipPath>
+  <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#2a1f3d"/></pattern>
+  <radialGradient id="fadeMask" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#fff" stop-opacity="0.9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <mask id="dotMask"><rect width="880" height="300" fill="url(#fadeMask)"/></mask>
+  <linearGradient id="g-name" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#e9d5ff"/><stop offset="0.55" stop-color="#c084fc"/><stop offset="1" stop-color="#a855f7"/>
+  </linearGradient>
+  <linearGradient id="g-shine" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="g-word" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#d946ef"/><stop offset="1" stop-color="#c084fc"/>
+  </linearGradient>
+</defs>
+<style>
+  text { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', -apple-system, sans-serif; }
+  .t { fill: #ede9fe; font-size: 18px; font-weight: 700; }
+  .s { fill: #8b80a8; font-size: 11px; }
+  .lbl { fill: #8b80a8; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; }
+  .val { fill: #ede9fe; font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
+  .fade { animation: fade 0.7s ease-out both; }
+  .rise { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .reveal { transform-box: view-box; transform-origin: 0 0; animation: reveal 1.6s cubic-bezier(0.3, 0, 0.2, 1) 0.2s both; }
+  .streak { animation: streak 7s linear infinite; }
+  .glow { animation: glow 6s ease-in-out infinite alternate; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes reveal { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes streak { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1000; } }
+  @keyframes glow { from { opacity: 0.55; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .fade, .rise, .reveal, .streak, .glow, .anim { animation: none !important; }
+  }
+  .orb { transform-box: fill-box; transform-origin: center; }
+  .o1 { animation: drift1 16s ease-in-out infinite alternate; }
+  .o2 { animation: drift2 19s ease-in-out infinite alternate; }
+  .o3 { animation: drift3 23s ease-in-out infinite alternate; }
+  @keyframes drift1 { from { transform: translate(0, 0) scale(1); } to { transform: translate(120px, 40px) scale(1.2); } }
+  @keyframes drift2 { from { transform: translate(0, 0) scale(1.1); } to { transform: translate(-140px, -30px) scale(0.9); } }
+  @keyframes drift3 { from { transform: translate(0, 0); } to { transform: translate(-60px, 50px); } }
+  .shine { animation: shine 5s ease-in-out infinite; }
+  @keyframes shine { 0% { transform: translateX(-260px); } 55%, 100% { transform: translateX(720px); } }
+  .word { opacity: 0; animation: word 12s ease-in-out infinite both; }
+  @keyframes word { 0% { opacity: 0; transform: translateY(8px); } 4%, 21% { opacity: 1; transform: none; } 25%, 100% { opacity: 0; transform: translateY(-8px); } }
+  .float { animation: float 6s ease-in-out infinite alternate; }
+  @keyframes float { from { transform: translateY(-5px); } to { transform: translateY(5px); } }
+  .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2s ease-out infinite; }
+  @keyframes pulse { from { transform: scale(1); opacity: 0.8; } to { transform: scale(3); opacity: 0; } }
+  .blink { animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .word { animation: none; } .w0 { opacity: 1; } }</style>
+<rect x="0.5" y="0.5" width="879" height="299" rx="16" fill="#0d0b14" stroke="#2a1f3d"/>
+
+<rect x="0.5" y="0.5" width="879" height="299" rx="16" pathLength="1000" stroke="#c084fc" stroke-width="1.5"
+  stroke-dasharray="70 930" stroke-linecap="round" opacity="0.85" class="streak"/>
+
+<g clip-path="url(#card)">
+  <rect width="880" height="300" fill="url(#dots)" mask="url(#dotMask)"/>
+  <g filter="url(#blur)">
+    <circle class="orb o1" cx="160" cy="60" r="120" fill="#6d28d9" opacity="0.55"/>
+    <circle class="orb o2" cx="720" cy="230" r="140" fill="#a855f7" opacity="0.35"/>
+    <circle class="orb o3" cx="480" cy="-10" r="110" fill="#d946ef" opacity="0.22"/>
+  </g>
+</g>
+
+<g class="rise" transform="translate(48 52)">
+  <rect width="214" height="28" rx="14" fill="#151021" stroke="#2a1f3d"/>
+  <circle cx="16" cy="14" r="4" fill="#c084fc"/>
+  <circle cx="16" cy="14" r="4" fill="#c084fc" class="pulse"/>
+  <text x="30" y="18.5" fill="#c9bfe6" font-size="12" font-weight="600">Based in Londrina, Brazil</text>
+</g>
+
+<g class="rise" style="animation-delay:0.15s">
+  <g clip-path="url(#name)">
+    <rect x="40" y="90" width="560" height="60" fill="url(#g-name)"/>
+    <rect x="0" y="90" width="160" height="60" fill="url(#g-shine)" class="shine" opacity="0.6"/>
+  </g>
+</g>
+<text x="50" y="176" fill="#c9bfe6" font-size="21" font-weight="600" class="rise" style="animation-delay:0.30s">Junior Full Stack Developer</text>
+<g transform="translate(50 214)" class="rise" style="animation-delay:0.45s">
+  <text x="0" y="0" fill="#8b80a8" font-size="17">I like building</text>
+  <text x="112" y="0" class="word w0" style="animation-delay:0s" fill="url(#g-word)" font-size="17" font-weight="700">front ends</text><text x="112" y="0" class="word w1" style="animation-delay:3s" fill="url(#g-word)" font-size="17" font-weight="700">back ends</text><text x="112" y="0" class="word w2" style="animation-delay:6s" fill="url(#g-word)" font-size="17" font-weight="700">integrations</text><text x="112" y="0" class="word w3" style="animation-delay:9s" fill="url(#g-word)" font-size="17" font-weight="700">automations</text>
+</g>
+<text x="50" y="256" fill="#8b80a8" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" class="rise" style="animation-delay:0.60s">PHP  ·  JavaScript  ·  Python  ·  SQL</text>
+
+<g transform="translate(544 52)">
+  <g class="float">
+    <rect width="292" height="196" rx="14" fill="#151021" fill-opacity="0.92" stroke="#2a1f3d"/>
+    <rect width="292" height="34" rx="14" fill="#1c1530"/>
+    <rect y="20" width="292" height="14" fill="#1c1530"/>
+    <circle cx="20" cy="17" r="5" fill="#f472b6" opacity="0.8"/>
+    <circle cx="38" cy="17" r="5" fill="#c084fc" opacity="0.8"/>
+    <circle cx="56" cy="17" r="5" fill="#6366f1" opacity="0.8"/>
+    <text x="146" y="21" text-anchor="middle" fill="#8b80a8" font-size="11" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">about.js</text>
+    <text x="24" y="66" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="12.5" class="rise" style="animation-delay:0.60s"><tspan fill="#c084fc">const&#160;</tspan><tspan fill="#e9d5ff">julio</tspan><tspan fill="#8b80a8">&#160;=&#160;{</tspan></text>
+<text x="24" y="87" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="12.5" class="rise" style="animation-delay:0.72s"><tspan fill="#8b80a8">&#160;&#160;</tspan><tspan fill="#e9d5ff">role</tspan><tspan fill="#8b80a8">:&#160;</tspan><tspan fill="#a5b4fc">&#39;Full&#160;Stack&#160;Dev&#39;</tspan><tspan fill="#8b80a8">,</tspan></text>
+<text x="24" y="108" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="12.5" class="rise" style="animation-delay:0.84s"><tspan fill="#8b80a8">&#160;&#160;</tspan><tspan fill="#e9d5ff">stack</tspan><tspan fill="#8b80a8">:&#160;[</tspan><tspan fill="#a5b4fc">&#39;PHP&#39;</tspan><tspan fill="#8b80a8">,&#160;</tspan><tspan fill="#a5b4fc">&#39;JS&#39;</tspan><tspan fill="#8b80a8">,&#160;</tspan><tspan fill="#a5b4fc">&#39;Python&#39;</tspan><tspan fill="#8b80a8">],</tspan></text>
+<text x="24" y="129" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="12.5" class="rise" style="animation-delay:0.96s"><tspan fill="#8b80a8">&#160;&#160;</tspan><tspan fill="#e9d5ff">based</tspan><tspan fill="#8b80a8">:&#160;</tspan><tspan fill="#a5b4fc">&#39;Londrina,&#160;BR&#39;</tspan><tspan fill="#8b80a8">,</tspan></text>
+<text x="24" y="150" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="12.5" class="rise" style="animation-delay:1.08s"><tspan fill="#8b80a8">&#160;&#160;</tspan><tspan fill="#e9d5ff">learning</tspan><tspan fill="#8b80a8">:&#160;</tspan><tspan fill="#f0abfc">true</tspan><tspan fill="#8b80a8">,</tspan></text>
+<text x="24" y="171" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="12.5" class="rise" style="animation-delay:1.20s"><tspan fill="#8b80a8">};</tspan></text>
+    <rect x="44" y="167" width="8" height="15" fill="#c084fc" class="blink"/>
+  </g>
+</g>
+</svg>

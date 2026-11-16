@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="110" viewBox="0 0 880 110" fill="none" role="img">
+<defs>
+  <linearGradient id="g-wave" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#a855f7" stop-opacity="0"/><stop offset="0.5" stop-color="#c084fc"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="g-wave2" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#d946ef" stop-opacity="0"/><stop offset="0.5" stop-color="#d946ef" stop-opacity="0.7"/><stop offset="1" stop-color="#d946ef" stop-opacity="0"/>
+  </linearGradient>
+  <mask id="m"><rect width="880" height="110" fill="url(#g-wave)"/></mask>
+</defs>
+<style>
+  text { font-family: 'Segoe UI', Ubuntu, -apple-system, sans-serif; }
+  .w1 { animation: slide 9s linear infinite; }
+  .w2 { animation: slide 13s linear infinite reverse; }
+  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-240px); } }
+  @media (prefers-reduced-motion: reduce) { .w1, .w2 { animation: none; } }
+</style>
+<g mask="url(#m)">
+  <path class="w1" d="M0 40 Q60 28 120 40 Q180 52 240 40 Q300 28 360 40 Q420 52 480 40 Q540 28 600 40 Q660 52 720 40 Q780 28 840 40 Q900 52 960 40 Q1020 28 1080 40 Q1140 52 1200 40 Q1260 28 1320 40 Q1380 52 1440 40 Q1500 28 1560 40 Q1620 52 1680 40 Q1740 28 1800 40" stroke="#c084fc" stroke-width="2"/>
+  <path class="w2" d="M0 46 Q60 38 120 46 Q180 54 240 46 Q300 38 360 46 Q420 54 480 46 Q540 38 600 46 Q660 54 720 46 Q780 38 840 46 Q900 54 960 46 Q1020 38 1080 46 Q1140 54 1200 46 Q1260 38 1320 46 Q1380 54 1440 46 Q1500 38 1560 46 Q1620 54 1680 46 Q1740 38 1800 46" stroke="#d946ef" stroke-width="1.5" opacity="0.7"/>
+</g>
+<text x="440" y="92" text-anchor="middle" fill="#8b80a8" font-size="13">Thanks for stopping by</text>
+</svg>

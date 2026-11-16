@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="522" viewBox="0 0 880 522" fill="none" role="img">
+<defs>
+  <linearGradient id="g-text" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#e9d5ff"/><stop offset="1" stop-color="#a855f7"/>
+  </linearGradient>
+  <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#d946ef"/><stop offset="0.5" stop-color="#a855f7"/><stop offset="1" stop-color="#6366f1"/>
+  </linearGradient>
+  <linearGradient id="g-streak" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#a855f7" stop-opacity="0"/>
+    <stop offset="0.5" stop-color="#e9d5ff"/>
+    <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+  </linearGradient>
+  <radialGradient id="g-glow" cx="1" cy="0" r="1">
+    <stop offset="0" stop-color="#a855f7" stop-opacity="0.22"/>
+    <stop offset="0.6" stop-color="#a855f7" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="g-sep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#a855f7" stop-opacity="0.5"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/></linearGradient>
+</defs>
+<style>
+  text { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', -apple-system, sans-serif; }
+  .t { fill: #ede9fe; font-size: 18px; font-weight: 700; }
+  .s { fill: #8b80a8; font-size: 11px; }
+  .lbl { fill: #8b80a8; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; }
+  .val { fill: #ede9fe; font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
+  .fade { animation: fade 0.7s ease-out both; }
+  .rise { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .reveal { transform-box: view-box; transform-origin: 0 0; animation: reveal 1.6s cubic-bezier(0.3, 0, 0.2, 1) 0.2s both; }
+  .streak { animation: streak 7s linear infinite; }
+  .glow { animation: glow 6s ease-in-out infinite alternate; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes reveal { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes streak { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1000; } }
+  @keyframes glow { from { opacity: 0.55; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .fade, .rise, .reveal, .streak, .glow, .anim { animation: none !important; }
+  }</style>
+<rect x="0.5" y="0.5" width="879" height="521" rx="16" fill="#0d0b14" stroke="#2a1f3d"/>
+<rect x="0.5" y="0.5" width="879" height="521" rx="16" fill="url(#g-glow)" class="glow"/>
+<rect x="0.5" y="0.5" width="879" height="521" rx="16" pathLength="1000" stroke="#c084fc" stroke-width="1.5"
+  stroke-dasharray="70 930" stroke-linecap="round" opacity="0.85" class="streak"/>
+<g class="rise">
+  <rect x="32" y="27" width="4" height="22" rx="2" fill="url(#g-accent)"/>
+  <text x="48" y="44" class="t">Some things I&#39;ve worked on</text>
+  <text x="48" y="64" class="s" font-size="12">Real problems from real projects</text>
+</g>
+<g class="rise" style="animation-delay:0.14s">
+  <text x="32" y="122" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="800" fill="url(#g-text)">01</text>
+  <text x="96" y="104" fill="#c084fc" font-size="11" font-weight="700" letter-spacing="0.12em">PERFORMANCE</text>
+  <text x="96" y="128" fill="#c9bfe6" font-size="14.5">Took a home page from 65 to 95 in Lighthouse performance on mobile (70 to 100 on desktop) by loading</text><text x="96" y="151" fill="#c9bfe6" font-size="14.5">third-party scripts only after the visitor accepts cookies.</text>
+</g><rect x="96" y="169" width="752" height="1" fill="url(#g-sep)" class="fade" style="animation-delay:0.14s"/>
+<g class="rise" style="animation-delay:0.28s">
+  <text x="32" y="209" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="800" fill="url(#g-text)">02</text>
+  <text x="96" y="191" fill="#c084fc" font-size="11" font-weight="700" letter-spacing="0.12em">SECURITY</text>
+  <text x="96" y="215" fill="#c9bfe6" font-size="14.5">Found and fixed security issues in third-party payment and anti-fraud modules, including an SQL injection and</text><text x="96" y="238" fill="#c9bfe6" font-size="14.5">a webhook that accepted requests without validation.</text>
+</g><rect x="96" y="256" width="752" height="1" fill="url(#g-sep)" class="fade" style="animation-delay:0.28s"/>
+<g class="rise" style="animation-delay:0.42s">
+  <text x="32" y="296" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="800" fill="url(#g-text)">03</text>
+  <text x="96" y="278" fill="#c084fc" font-size="11" font-weight="700" letter-spacing="0.12em">FRONT END</text>
+  <text x="96" y="302" fill="#c9bfe6" font-size="14.5">Helped move a store to a new Tailwind-based theme, rebuilding the checkout and setting up 301 redirects so</text><text x="96" y="325" fill="#c9bfe6" font-size="14.5">no old link would break.</text>
+</g><rect x="96" y="343" width="752" height="1" fill="url(#g-sep)" class="fade" style="animation-delay:0.42s"/>
+<g class="rise" style="animation-delay:0.56s">
+  <text x="32" y="383" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="800" fill="url(#g-text)">04</text>
+  <text x="96" y="365" fill="#c084fc" font-size="11" font-weight="700" letter-spacing="0.12em">AUTOMATION</text>
+  <text x="96" y="389" fill="#c9bfe6" font-size="14.5">Wrote a set of Python scripts that collected product images from public APIs and published 185 products with</text><text x="96" y="412" fill="#c9bfe6" font-size="14.5">photos and SEO content.</text>
+</g><rect x="96" y="430" width="752" height="1" fill="url(#g-sep)" class="fade" style="animation-delay:0.56s"/>
+<g class="rise" style="animation-delay:0.70s">
+  <text x="32" y="470" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="800" fill="url(#g-text)">05</text>
+  <text x="96" y="452" fill="#c084fc" font-size="11" font-weight="700" letter-spacing="0.12em">OPS</text>
+  <text x="96" y="476" fill="#c9bfe6" font-size="14.5">Wrote a Bash script that applied security patches to every store on our server with zero downtime.</text>
+</g>
+</svg>
