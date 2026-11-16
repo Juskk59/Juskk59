@@ -73,7 +73,9 @@ async function gql(query, variables = {}) {
   return json.data;
 }
 
-async function rest(p) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function rest(p, attempt = 1) {
   const res = await fetch(`https://api.github.com${p}`, {
     headers: {
       Authorization: `token ${TOKEN}`,
@@ -81,6 +83,13 @@ async function rest(p) {
       'User-Agent': 'profile-cards-generator',
     },
   });
+  // search has tight (and secondary) rate limits: wait and retry a few times
+  if ((res.status === 403 || res.status === 429) && attempt <= 3) {
+    const wait = Number(res.headers.get('retry-after')) || 60 * attempt;
+    console.warn(`Rate limited on ${p.split('?')[0]}, retrying in ${wait}s`);
+    await sleep(wait * 1000);
+    return rest(p, attempt + 1);
+  }
   if (!res.ok) throw new Error(`REST ${res.status} on ${p.split('?')[0]}`);
   return res.json();
 }
@@ -217,12 +226,9 @@ async function fetchData() {
     langNote = 'by code size across my repositories';
   }
 
-  let search = null;
-  try {
-    search = await commitSearch();
-  } catch (err) {
-    console.warn(`Commit search unavailable, using GraphQL numbers only: ${err.message}`);
-  }
+  // if the search fails (rate limit, outage) stop here so yesterday's cards stay in place
+  // instead of being replaced by numbers that leave out the private commits
+  const search = await commitSearch();
   if (search && search.langs.size) {
     langs.clear();
     for (const [k, v] of search.langs) langs.set(k, v);
