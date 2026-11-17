@@ -44,11 +44,11 @@
 <g class="fade"><text x="24" y="38" class="t">Most Used Languages</text>
 <text x="24" y="56" class="s">weighted by my commits · last 12 months</text></g>
 <clipPath id="bar"><rect x="24" y="74" width="372" height="10" rx="5"/></clipPath>
-<g clip-path="url(#bar)" class="fade" style="animation-delay:0.08s"><rect x="24" y="74" width="372" height="10" fill="#211933"/><rect x="24.00" y="74" width="235.51" height="10" fill="#c084fc"/><rect x="259.51" y="74" width="59.21" height="10" fill="#a855f7"/><rect x="318.72" y="74" width="49.62" height="10" fill="#8b5cf6"/><rect x="368.34" y="74" width="21.65" height="10" fill="#7c3aed"/><rect x="389.99" y="74" width="3.02" height="10" fill="#6d28d9"/><rect x="393.01" y="74" width="1.26" height="10" fill="#d8b4fe"/><rect x="394.27" y="74" width="0.88" height="10" fill="#4c1d95"/><rect x="395.15" y="74" width="0.85" height="10" fill="#5b4a7a"/></g>
+<g clip-path="url(#bar)" class="fade" style="animation-delay:0.08s"><rect x="24" y="74" width="372" height="10" fill="#211933"/><rect x="24.00" y="74" width="235.08" height="10" fill="#c084fc"/><rect x="259.08" y="74" width="59.11" height="10" fill="#a855f7"/><rect x="318.20" y="74" width="50.27" height="10" fill="#8b5cf6"/><rect x="368.47" y="74" width="21.41" height="10" fill="#7c3aed"/><rect x="389.88" y="74" width="3.18" height="10" fill="#6d28d9"/><rect x="393.07" y="74" width="1.23" height="10" fill="#d8b4fe"/><rect x="394.29" y="74" width="0.87" height="10" fill="#4c1d95"/><rect x="395.16" y="74" width="0.84" height="10" fill="#5b4a7a"/></g>
 <g class="fade" style="animation-delay:0.16s" transform="translate(24 118)">
   <circle cx="5" cy="-4" r="5" fill="#c084fc"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">PHP</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">63.3%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">63.2%</text>
 </g>
 <g class="fade" style="animation-delay:0.24s" transform="translate(216 118)">
   <circle cx="5" cy="-4" r="5" fill="#a855f7"/>
@@ -58,7 +58,7 @@
 <g class="fade" style="animation-delay:0.32s" transform="translate(24 146)">
   <circle cx="5" cy="-4" r="5" fill="#8b5cf6"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">JavaScript</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">13.3%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">13.5%</text>
 </g>
 <g class="fade" style="animation-delay:0.40s" transform="translate(216 146)">
   <circle cx="5" cy="-4" r="5" fill="#7c3aed"/>
@@ -68,7 +68,7 @@
 <g class="fade" style="animation-delay:0.48s" transform="translate(24 174)">
   <circle cx="5" cy="-4" r="5" fill="#6d28d9"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">Less</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">0.8%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">0.9%</text>
 </g>
 <g class="fade" style="animation-delay:0.56s" transform="translate(216 174)">
   <circle cx="5" cy="-4" r="5" fill="#d8b4fe"/>
