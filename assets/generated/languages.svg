@@ -44,31 +44,31 @@
 <g class="fade"><text x="24" y="38" class="t">Most Used Languages</text>
 <text x="24" y="56" class="s">weighted by my commits · last 12 months</text></g>
 <clipPath id="bar"><rect x="24" y="74" width="372" height="10" rx="5"/></clipPath>
-<g clip-path="url(#bar)" class="fade" style="animation-delay:0.08s"><rect x="24" y="74" width="372" height="10" fill="#211933"/><rect x="24.00" y="74" width="234.71" height="10" fill="#c084fc"/><rect x="258.71" y="74" width="58.88" height="10" fill="#a855f7"/><rect x="317.59" y="74" width="51.08" height="10" fill="#8b5cf6"/><rect x="368.67" y="74" width="21.08" height="10" fill="#7c3aed"/><rect x="389.75" y="74" width="3.42" height="10" fill="#6d28d9"/><rect x="393.17" y="74" width="1.18" height="10" fill="#d8b4fe"/><rect x="394.36" y="74" width="0.84" height="10" fill="#4c1d95"/><rect x="395.19" y="74" width="0.81" height="10" fill="#5b4a7a"/></g>
+<g clip-path="url(#bar)" class="fade" style="animation-delay:0.08s"><rect x="24" y="74" width="372" height="10" fill="#211933"/><rect x="24.00" y="74" width="235.38" height="10" fill="#c084fc"/><rect x="259.38" y="74" width="58.35" height="10" fill="#a855f7"/><rect x="317.73" y="74" width="51.36" height="10" fill="#8b5cf6"/><rect x="369.09" y="74" width="20.60" height="10" fill="#7c3aed"/><rect x="389.69" y="74" width="3.59" height="10" fill="#6d28d9"/><rect x="393.28" y="74" width="1.13" height="10" fill="#d8b4fe"/><rect x="394.41" y="74" width="0.81" height="10" fill="#4c1d95"/><rect x="395.22" y="74" width="0.78" height="10" fill="#5b4a7a"/></g>
 <g class="fade" style="animation-delay:0.16s" transform="translate(24 118)">
   <circle cx="5" cy="-4" r="5" fill="#c084fc"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">PHP</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">63.1%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">63.3%</text>
 </g>
 <g class="fade" style="animation-delay:0.24s" transform="translate(216 118)">
   <circle cx="5" cy="-4" r="5" fill="#a855f7"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">HTML</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">15.8%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">15.7%</text>
 </g>
 <g class="fade" style="animation-delay:0.32s" transform="translate(24 146)">
   <circle cx="5" cy="-4" r="5" fill="#8b5cf6"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">JavaScript</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">13.7%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">13.8%</text>
 </g>
 <g class="fade" style="animation-delay:0.40s" transform="translate(216 146)">
   <circle cx="5" cy="-4" r="5" fill="#7c3aed"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">CSS</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">5.7%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">5.5%</text>
 </g>
 <g class="fade" style="animation-delay:0.48s" transform="translate(24 174)">
   <circle cx="5" cy="-4" r="5" fill="#6d28d9"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">Less</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">0.9%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">1.0%</text>
 </g>
 <g class="fade" style="animation-delay:0.56s" transform="translate(216 174)">
   <circle cx="5" cy="-4" r="5" fill="#d8b4fe"/>
