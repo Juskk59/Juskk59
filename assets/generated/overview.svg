@@ -50,8 +50,8 @@
 <g class="fade" style="animation-delay:0.16s" transform="translate(350 82)">
   <circle r="34" stroke="#211933" stroke-width="7"/>
   <circle r="34" stroke="url(#g-text)" stroke-width="7" stroke-linecap="round"
-    stroke-dasharray="142.4 213.6" transform="rotate(-90)"/>
-  <text y="3" text-anchor="middle" font-size="21" font-weight="800" fill="#ede9fe" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">4</text>
+    stroke-dasharray="0.0 213.6" transform="rotate(-90)"/>
+  <text y="3" text-anchor="middle" font-size="21" font-weight="800" fill="#ede9fe" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">0</text>
   <text y="17" text-anchor="middle" class="lbl" font-size="7.5">DAY STREAK</text>
 </g>
 <line x1="24" x2="396" y1="134" y2="134" stroke="#2a1f3d"/>
