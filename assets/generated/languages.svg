@@ -44,11 +44,11 @@
 <g class="fade"><text x="24" y="38" class="t">Most Used Languages</text>
 <text x="24" y="56" class="s">weighted by my commits · last 12 months</text></g>
 <clipPath id="bar"><rect x="24" y="74" width="372" height="10" rx="5"/></clipPath>
-<g clip-path="url(#bar)" class="fade" style="animation-delay:0.08s"><rect x="24" y="74" width="372" height="10" fill="#211933"/><rect x="24.00" y="74" width="235.15" height="10" fill="#c084fc"/><rect x="259.15" y="74" width="58.25" height="10" fill="#a855f7"/><rect x="317.40" y="74" width="52.05" height="10" fill="#8b5cf6"/><rect x="369.46" y="74" width="20.42" height="10" fill="#7c3aed"/><rect x="389.87" y="74" width="3.78" height="10" fill="#6d28d9"/><rect x="393.65" y="74" width="1.09" height="10" fill="#d8b4fe"/><rect x="394.75" y="74" width="0.56" height="10" fill="#4c1d95"/><rect x="395.30" y="74" width="0.70" height="10" fill="#5b4a7a"/></g>
+<g clip-path="url(#bar)" class="fade" style="animation-delay:0.08s"><rect x="24" y="74" width="372" height="10" fill="#211933"/><rect x="24.00" y="74" width="234.59" height="10" fill="#c084fc"/><rect x="258.59" y="74" width="58.27" height="10" fill="#a855f7"/><rect x="316.85" y="74" width="52.64" height="10" fill="#8b5cf6"/><rect x="369.49" y="74" width="20.26" height="10" fill="#7c3aed"/><rect x="389.75" y="74" width="3.95" height="10" fill="#6d28d9"/><rect x="393.70" y="74" width="1.06" height="10" fill="#d8b4fe"/><rect x="394.76" y="74" width="0.54" height="10" fill="#4c1d95"/><rect x="395.30" y="74" width="0.70" height="10" fill="#5b4a7a"/></g>
 <g class="fade" style="animation-delay:0.16s" transform="translate(24 118)">
   <circle cx="5" cy="-4" r="5" fill="#c084fc"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">PHP</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">63.2%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">63.1%</text>
 </g>
 <g class="fade" style="animation-delay:0.24s" transform="translate(216 118)">
   <circle cx="5" cy="-4" r="5" fill="#a855f7"/>
@@ -58,17 +58,17 @@
 <g class="fade" style="animation-delay:0.32s" transform="translate(24 146)">
   <circle cx="5" cy="-4" r="5" fill="#8b5cf6"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">JavaScript</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">14.0%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">14.1%</text>
 </g>
 <g class="fade" style="animation-delay:0.40s" transform="translate(216 146)">
   <circle cx="5" cy="-4" r="5" fill="#7c3aed"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">CSS</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">5.5%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">5.4%</text>
 </g>
 <g class="fade" style="animation-delay:0.48s" transform="translate(24 174)">
   <circle cx="5" cy="-4" r="5" fill="#6d28d9"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">Less</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">1.0%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">1.1%</text>
 </g>
 <g class="fade" style="animation-delay:0.56s" transform="translate(216 174)">
   <circle cx="5" cy="-4" r="5" fill="#d8b4fe"/>
