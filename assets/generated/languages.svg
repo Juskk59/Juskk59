@@ -44,11 +44,11 @@
 <g class="fade"><text x="24" y="38" class="t">Most Used Languages</text>
 <text x="24" y="56" class="s">weighted by my commits · last 12 months</text></g>
 <clipPath id="bar"><rect x="24" y="74" width="372" height="10" rx="5"/></clipPath>
-<g clip-path="url(#bar)" class="fade" style="animation-delay:0.08s"><rect x="24" y="74" width="372" height="10" fill="#211933"/><rect x="24.00" y="74" width="234.62" height="10" fill="#c084fc"/><rect x="258.62" y="74" width="58.19" height="10" fill="#a855f7"/><rect x="316.81" y="74" width="52.65" height="10" fill="#8b5cf6"/><rect x="369.46" y="74" width="20.30" height="10" fill="#7c3aed"/><rect x="389.76" y="74" width="3.94" height="10" fill="#6d28d9"/><rect x="393.70" y="74" width="1.06" height="10" fill="#d8b4fe"/><rect x="394.76" y="74" width="0.54" height="10" fill="#4c1d95"/><rect x="395.30" y="74" width="0.70" height="10" fill="#5b4a7a"/></g>
+<g clip-path="url(#bar)" class="fade" style="animation-delay:0.08s"><rect x="24" y="74" width="372" height="10" fill="#211933"/><rect x="24.00" y="74" width="234.18" height="10" fill="#c084fc"/><rect x="258.18" y="74" width="58.12" height="10" fill="#a855f7"/><rect x="316.30" y="74" width="52.55" height="10" fill="#8b5cf6"/><rect x="368.85" y="74" width="20.35" height="10" fill="#7c3aed"/><rect x="389.20" y="74" width="3.92" height="10" fill="#6d28d9"/><rect x="393.12" y="74" width="1.07" height="10" fill="#d8b4fe"/><rect x="394.19" y="74" width="1.06" height="10" fill="#4c1d95"/><rect x="395.25" y="74" width="0.75" height="10" fill="#5b4a7a"/></g>
 <g class="fade" style="animation-delay:0.16s" transform="translate(24 118)">
   <circle cx="5" cy="-4" r="5" fill="#c084fc"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">PHP</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">63.1%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">63.0%</text>
 </g>
 <g class="fade" style="animation-delay:0.24s" transform="translate(216 118)">
   <circle cx="5" cy="-4" r="5" fill="#a855f7"/>
@@ -58,7 +58,7 @@
 <g class="fade" style="animation-delay:0.32s" transform="translate(24 146)">
   <circle cx="5" cy="-4" r="5" fill="#8b5cf6"/>
   <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">JavaScript</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">14.2%</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">14.1%</text>
 </g>
 <g class="fade" style="animation-delay:0.40s" transform="translate(216 146)">
   <circle cx="5" cy="-4" r="5" fill="#7c3aed"/>
@@ -72,13 +72,13 @@
 </g>
 <g class="fade" style="animation-delay:0.56s" transform="translate(216 174)">
   <circle cx="5" cy="-4" r="5" fill="#d8b4fe"/>
-  <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">Vue</text>
+  <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">Python</text>
   <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">0.3%</text>
 </g>
 <g class="fade" style="animation-delay:0.64s" transform="translate(24 202)">
   <circle cx="5" cy="-4" r="5" fill="#4c1d95"/>
-  <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">TypeScript</text>
-  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">0.1%</text>
+  <text x="18" y="0" fill="#ede9fe" font-size="13" font-weight="600">Vue</text>
+  <text x="172" y="0" text-anchor="end" fill="#8b80a8" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace">0.3%</text>
 </g>
 <g class="fade" style="animation-delay:0.72s" transform="translate(216 202)">
   <circle cx="5" cy="-4" r="5" fill="#5b4a7a"/>
